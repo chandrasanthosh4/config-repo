@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: inbound-adapter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,env,circuitbreakers,metrics,circuitbreakerevents,retryevents,retries,loggers
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      exclude: [discoveryComposite, discoveryClient]
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    circuit-breaker-aspect-order: 1
+    instances:
+      orderCreationCircuitBreaker:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 3
+        minimum-number-of-calls: 1
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          seconds: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        automatic-transition-from-open-to-half-open-enabled: true
+        event-consumer-buffer-size:  10
+
+  retry:
+    retry-aspect-order: 2
+    instances:
+      retryService:
+        max-attempts: 3
+        wait-duration: 
+          seconds: 30
+        retry-exceptions:
+          - java.lang.RuntimeException
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 2
+
+    metrics:
+      legacy:
+        enabled: true
+      enabled: true
