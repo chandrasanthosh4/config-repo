@@ -1,0 +1,46 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: integrator
+
+feign:
+  client:
+   config:
+     default:
+       connectTimeout: 25000
+       readTimeout: 25000
+       loggerLevel: FULL
+       defaultRequestHeaders:
+         Accept: application/json
+         Content-Type: application/json
+     gpoInboundAdapterClient:
+       readTimeout: 50000
+
+retry:
+  max-attempts: 1
+  period: 3000
+  max-period: 10000
+  delay: 5000
+  multiplier: 2
+
+backoff:
+  initial-interval: 5000
+  multiplier: 1
+  max-attempts: 2
+  max-interval: 10000
+
+gpo-inbound-adapter:
+  url: http://localhost:8082/inbound-adapter
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,env,metrics,loggers,retries
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      exclude: [discoveryComposite, discoveryClient]
