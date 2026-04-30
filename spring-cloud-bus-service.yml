@@ -18,6 +18,7 @@ spring:
           brokers:
             - http://localhost:29092
     bus:
+      enabled: true
       trace:
         enabled: true
       refresh:
@@ -32,4 +33,9 @@ endpoints:
           enabled: true
         env:
           enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: busrefresh
         
