@@ -24,4 +24,12 @@ spring:
         enabled: true
       env:
         enabled: true
+endpoints:
+  spring:
+    cloud:
+      bus:
+        refresh:
+          enabled: true
+        env:
+          enabled: true
         
