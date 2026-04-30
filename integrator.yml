@@ -31,6 +31,13 @@ spring:
     settings:
       web-allow-others: true
 
+api-gateway:
+  base-path: https://api.gateway.com
+  api-header: ApiKey
+  api-key: ${API_KEY:dummy}
+  env-header: environment
+  env: local
+
 feign:
   client:
    config:
