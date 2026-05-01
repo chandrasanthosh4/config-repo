@@ -8,8 +8,6 @@ echo:
 spring:
   application:
     name: spring-cloud-bus-service
-  config:
-    import: configserver:http://localhost:8888
   cloud:
     config:
       enabled: true
