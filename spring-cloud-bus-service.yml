@@ -16,6 +16,12 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8888
+    stream:
+      bindings:
+        springCloudBusInput:
+          destination: TP.POC.CONFIG.REFRESH
+        springCloudBusOutput:
+          destination: TP.POC.CONFIG.REFRESH
     bus:
       enabled: true
       destination: TP.POC.CONFIG.REFRESH
@@ -37,4 +43,3 @@ management:
   endpoint:
     env:
       show-values: ALWAYS
-        
