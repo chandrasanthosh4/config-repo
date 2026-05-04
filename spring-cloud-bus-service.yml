@@ -7,7 +7,7 @@ eureka:
 
 echo:
   message:
-    text: 'Hello, World! Aryan !!'
+    text: 'Hello, World! Janaki !!'
 
 spring:
   application:
@@ -18,6 +18,8 @@ spring:
       uri: http://localhost:8888
     bus:
       enabled: true
+      destination: TP.POC.CONFIG.REFRESH
+      id: ${spring.application.name}:${instanceId:${random.value}}
       trace:
         enabled: true
       refresh:
