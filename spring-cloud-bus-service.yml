@@ -7,7 +7,7 @@ eureka:
 
 echo:
   message:
-    text: 'Hello, World! Manaswini !!'
+    text: 'Hello, World! Janaki !!'
 
 spring:
   application:
