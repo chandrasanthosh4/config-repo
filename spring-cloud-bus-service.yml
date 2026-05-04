@@ -3,7 +3,7 @@ server:
 
 echo:
   message:
-    text: 'Hello, World! Santhosh !!'
+    text: 'Hello, World! Yasaswini !!'
 
 spring:
   application:
