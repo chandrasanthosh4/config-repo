@@ -1,9 +1,13 @@
 server:
   port: 0
 
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+
 echo:
   message:
-    text: 'Hello, World! Yasaswini !!'
+    text: 'Hello, World! Janaki !!'
 
 spring:
   application:
@@ -22,9 +26,9 @@ spring:
         enabled: true
   kafka:
     bootstrap-servers: localhost:29092
+
 management:
   endpoints:
     web:
       exposure:
         include: busrefresh,health,info,env,metrics
-        
