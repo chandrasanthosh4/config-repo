@@ -7,7 +7,7 @@ eureka:
 
 echo:
   message:
-    text: 'Hello, World! Aryan !!'
+    text: 'Hello, World! Janaki !!'
 
 spring:
   application:
@@ -34,3 +34,7 @@ management:
     web:
       exposure:
         include: busrefresh,health,info,env,metrics
+  endpoint:
+    env:
+      show-values: ALWAYS
+        
