@@ -1,37 +1,37 @@
-server:
-  port: 0
+adhoc:
+  value: ${spring.application.instance_id:${random.value}}
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+    instance-id: ${spring.application.name}:${adhoc.value}
 
 echo:
   message:
-    text: 'Hello, World! Janu !!'
+    text: 'Hello World.. Janaki !!'
 
 spring:
   application:
     name: spring-cloud-bus-service
   cloud:
-    config:
-      enabled: true
-      uri: http://localhost:8888
+    enabled: true
+    uri: http://localhost:8888
     stream:
       bindings:
         springCloudBusInput:
+          group: CG.${spring.application.name}.${adhoc.value}
           destination: TP.POC.CONFIG.REFRESH
         springCloudBusOutput:
           destination: TP.POC.CONFIG.REFRESH
-    bus:
+  bus:
+    enabled: true
+    destination: TP.POC.CONFIG.REFRESH
+    id: ${spring.application.name}:${adhoc.value}
+    trace:
       enabled: true
-      destination: TP.POC.CONFIG.REFRESH
-      id: ${spring.application.name}:${instanceId:${random.value}}
-      trace:
-        enabled: true
-      refresh:
-        enabled: true
-      env:
-        enabled: true
+    refresh:
+      enabled: true
+    env:
+      enabled: true
   kafka:
     bootstrap-servers: localhost:29092
 
