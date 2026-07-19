@@ -18,14 +18,14 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: CG. ${spring.application.name}:${spring.application.instance-id}
+          group: CG.${spring.application.name}:${spring.application.instance-id}
           destination: TP.POC.CONFIG.REFRESH
         springCloudBusOutput:
           destination: TP.POC.CONFIG.REFRESH
     bus:
       enabled: true
       destination: TP.POC.CONFIG.REFRESH
-      id:  ${spring.application.name}:${spring.application.instance-id}
+      id: ${spring.application.name}:${spring.application.instance-id}
       trace:
         enabled: true
       refresh:
