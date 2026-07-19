@@ -7,7 +7,7 @@ eureka:
 
 echo:
   message:
-    text: 'Hello World.. Surya !!'
+    text: 'Hello World.. Janaki !!'
 
 spring:
   application:
@@ -22,16 +22,16 @@ spring:
           destination: TP.POC.CONFIG.REFRESH
         springCloudBusOutput:
           destination: TP.POC.CONFIG.REFRESH
-  bus:
-    enabled: true
-    destination: TP.POC.CONFIG.REFRESH
-    id: ${eureka.instance.instance-id}
-    trace:
+    bus:
       enabled: true
-    refresh:
-      enabled: true
-    env:
-      enabled: true
+      destination: TP.POC.CONFIG.REFRESH
+      id: ${eureka.instance.instance-id}
+      trace:
+        enabled: true
+      refresh:
+        enabled: true
+      env:
+        enabled: true
   kafka:
     bootstrap-servers: localhost:29092
 
