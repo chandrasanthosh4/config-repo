@@ -1,9 +1,9 @@
-adhoc:
-  value: ${spring.application.instance_id:${random.value}}
+server:
+  port: 0
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${adhoc.value}
+    instance-id: ${spring.application.name}:${random.value}
 
 echo:
   message:
@@ -18,14 +18,14 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: CG.${spring.application.name}.${adhoc.value}
+          group: CG.${eureka.instance.instance-id}
           destination: TP.POC.CONFIG.REFRESH
         springCloudBusOutput:
           destination: TP.POC.CONFIG.REFRESH
   bus:
     enabled: true
     destination: TP.POC.CONFIG.REFRESH
-    id: ${spring.application.name}:${adhoc.value}
+    id: ${eureka.instance.instance-id}
     trace:
       enabled: true
     refresh:
