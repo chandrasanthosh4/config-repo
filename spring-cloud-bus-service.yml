@@ -12,6 +12,7 @@ echo:
 spring:
   application:
     name: spring-cloud-bus-service
+    instance-id: 1234
   cloud:
     enabled: true
     uri: http://localhost:8888
