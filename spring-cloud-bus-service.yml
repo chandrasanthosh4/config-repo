@@ -18,14 +18,14 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: CG.${eureka.instance.instance-id}
+          group: CG.${spring.application.name}:${random.value}
           destination: TP.POC.CONFIG.REFRESH
         springCloudBusOutput:
           destination: TP.POC.CONFIG.REFRESH
     bus:
       enabled: true
       destination: TP.POC.CONFIG.REFRESH
-      id: ${eureka.instance.instance-id}
+      id: ${spring.application.name}:${random.value}
       trace:
         enabled: true
       refresh:
