@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${local.server.port:${HOSTNAME}}
+    instance-id: ${spring.application.name}:${local.server.port}
 
 echo:
   message:
@@ -18,14 +18,14 @@ spring:
     stream:
       bindings:
         springCloudBusInput:
-          group: CG.${spring.application.name}.${local.server.port:${HOSTNAME}}
+          group: CG.${spring.application.name}.${local.server.port}
           destination: TP.POC.CONFIG.REFRESH
         springCloudBusOutput:
           destination: TP.POC.CONFIG.REFRESH
     bus:
       enabled: true
       destination: TP.POC.CONFIG.REFRESH
-      id: ${spring.application.name}:${local.server.port:${HOSTNAME}}
+      id: ${spring.application.name}:${local.server.port}
       trace:
         enabled: true
       refresh:
